@@ -22,6 +22,7 @@
 <td width="50%">
 
 ### 🐍 Python Track
+
 - **Async Programming** with `asyncio`
 - **Discord.py** framework & event handling
 - **Python-telegram-bot** integration
@@ -33,6 +34,7 @@
 <td width="50%">
 
 ### 📦 JavaScript Track
+
 - **Modern ES6+** syntax & features
 - **Discord.js v14** library
 - **Telegraf** framework for Telegram
@@ -97,12 +99,12 @@ graph LR
 
 ### 🛠️ Required Tools
 
-| Tool | Purpose | Download |
-|------|---------|----------|
-| **Git** | Version control | [git-scm.com](https://git-scm.com/) |
-| **VS Code** | Code editor (recommended) | [code.visualstudio.com](https://code.visualstudio.com/) |
-| **Discord Account** | Bot token generation | [discord.com](https://discord.com/) |
-| **Telegram Account** | Bot token (optional) | [telegram.org](https://telegram.org/) |
+| Tool                 | Purpose                   | Download                                                |
+| -------------------- | ------------------------- | ------------------------------------------------------- |
+| **Git**              | Version control           | [git-scm.com](https://git-scm.com/)                     |
+| **VS Code**          | Code editor (recommended) | [code.visualstudio.com](https://code.visualstudio.com/) |
+| **Discord Account**  | Bot token generation      | [discord.com](https://discord.com/)                     |
+| **Telegram Account** | Bot token (optional)      | [telegram.org](https://telegram.org/)                   |
 
 ---
 
@@ -178,12 +180,14 @@ cd openclaw-bot
 #### Virtual Environment (Isolation)
 
 **Windows:**
+
 ```powershell
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
 **Linux/macOS:**
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
@@ -199,6 +203,7 @@ pip install -r requirements.txt
 ```
 
 **Core Libraries:**
+
 ```
 discord.py==2.3.2          # Discord API wrapper
 python-telegram-bot==20.7  # Telegram Bot API
@@ -218,6 +223,7 @@ yarn install
 ```
 
 **Core Libraries:**
+
 ```json
 {
   "discord.js": "^14.14.1",
@@ -310,7 +316,7 @@ Enable these **Gateway Intents**:
 2. Click **"Copy"** to copy your token
 3. Add to `.env`:
    ```env
-   DISCORD_TOKEN=your_discord_bot_token_placeholder
+   DISCORD_TOKEN=your_discord_bot_token_here
    ```
 
 > 🔒 **Security:** Never commit `.env` to Git! Token = full bot access.
@@ -319,16 +325,16 @@ Enable these **Gateway Intents**:
 
 **Required Permissions (Integer: 274878024768):**
 
-| Permission | Purpose |
-|------------|---------|
-| View Channels | See server channels |
-| Send Messages | Send responses |
-| Send Messages in Threads | Thread support |
-| Embed Links | Rich embeds |
-| Attach Files | File uploads |
-| Read Message History | Context awareness |
-| Add Reactions | Interactive features |
-| Use Slash Commands | Modern commands |
+| Permission               | Purpose              |
+| ------------------------ | -------------------- |
+| View Channels            | See server channels  |
+| Send Messages            | Send responses       |
+| Send Messages in Threads | Thread support       |
+| Embed Links              | Rich embeds          |
+| Attach Files             | File uploads         |
+| Read Message History     | Context awareness    |
+| Add Reactions            | Interactive features |
+| Use Slash Commands       | Modern commands      |
 
 **Generate Invite URL:**
 
@@ -352,14 +358,16 @@ Replace `YOUR_CLIENT_ID` with your Application ID from **"General Information"**
 #### Step 2: Get Token
 
 BotFather responds with:
+
 ```
 Done! Congratulations on your new bot.
 Token: your_telegram_bot_token_placeholder
 ```
 
 Add to `.env`:
+
 ```env
-TELEGRAM_TOKEN=your_telegram_bot_token_placeholder
+TELEGRAM_TOKEN=your_telegram_bot_token_here
 ```
 
 #### Step 3: Configure Commands
@@ -440,34 +448,34 @@ bot.run('TOKEN')
 
 ```javascript
 // JavaScript Example
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits } = require("discord.js");
 
 // 1. Initialize client
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ]
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
 });
 
 // 2. Event: Bot ready
-client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
+client.once("ready", () => {
+  console.log(`Logged in as ${client.user.tag}`);
 });
 
 // 3. Event: Message received
-client.on('messageCreate', async (message) => {
-    if (message.author.bot) return;
-    
-    // 4. Command: Ping
-    if (message.content === '!ping') {
-        await message.reply(`Pong! ${client.ws.ping}ms`);
-    }
+client.on("messageCreate", async (message) => {
+  if (message.author.bot) return;
+
+  // 4. Command: Ping
+  if (message.content === "!ping") {
+    await message.reply(`Pong! ${client.ws.ping}ms`);
+  }
 });
 
 // 5. Login
-client.login('TOKEN');
+client.login("TOKEN");
 ```
 
 ---
@@ -486,10 +494,10 @@ from discord.ext import commands
 
 class Hello(commands.Cog):
     """A simple hello command"""
-    
+
     def __init__(self, bot):
         self.bot = bot
-    
+
     @commands.command(name='hello', help='Greets the user')
     async def hello(self, ctx):
         """Responds with a personalized greeting"""
@@ -514,18 +522,18 @@ await bot.load_extension('src.commands.hello')
 
 ```javascript
 module.exports = {
-    name: 'hello',
-    description: 'Greets the user',
-    execute(message) {
-        message.reply(`Hello, ${message.author.username}! 👋`);
-    }
+  name: "hello",
+  description: "Greets the user",
+  execute(message) {
+    message.reply(`Hello, ${message.author.username}! 👋`);
+  },
 };
 ```
 
 **Load in `index.js`:**
 
 ```javascript
-const helloCommand = require('./src/commands/hello');
+const helloCommand = require("./src/commands/hello");
 // Register command...
 ```
 
@@ -534,6 +542,7 @@ const helloCommand = require('./src/commands/hello');
 ### Exercise 2: Server Info Command
 
 **Challenge:** Create a command that displays:
+
 - Server name
 - Total members
 - Server creation date
@@ -543,6 +552,7 @@ const helloCommand = require('./src/commands/hello');
 <summary><b>💡 Hint</b></summary>
 
 **Python:** Use `ctx.guild` object
+
 ```python
 guild = ctx.guild
 name = guild.name
@@ -552,6 +562,7 @@ owner = guild.owner
 ```
 
 **JavaScript:** Use `message.guild` object
+
 ```javascript
 const guild = message.guild;
 const name = guild.name;
@@ -569,6 +580,7 @@ const owner = guild.owner;
 ### Development Mode
 
 **Python:**
+
 ```bash
 # Activate virtual environment
 source venv/bin/activate  # Linux/macOS
@@ -580,6 +592,7 @@ python main.py --reload
 ```
 
 **JavaScript:**
+
 ```bash
 # Run with nodemon (auto-reload)
 npm install -g nodemon
@@ -595,11 +608,13 @@ npm run dev
 <summary><b>🔧 Using PM2 (Process Manager)</b></summary>
 
 **Install PM2:**
+
 ```bash
 npm install -g pm2
 ```
 
 **Python:**
+
 ```bash
 pm2 start main.py --name openclaw-bot --interpreter python3
 pm2 save
@@ -607,6 +622,7 @@ pm2 startup
 ```
 
 **JavaScript:**
+
 ```bash
 pm2 start index.js --name openclaw-bot
 pm2 save
@@ -614,6 +630,7 @@ pm2 startup
 ```
 
 **PM2 Commands:**
+
 ```bash
 pm2 list              # List all processes
 pm2 logs openclaw-bot # View logs
@@ -648,6 +665,7 @@ WantedBy=multi-user.target
 ```
 
 **Enable & start:**
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable openclaw-bot
@@ -675,6 +693,7 @@ cat .env | grep DISCORD_TOKEN
 ```
 
 **Common Issues:**
+
 - Token has spaces
 - Token is incomplete
 - Using old/regenerated token
@@ -685,12 +704,14 @@ cat .env | grep DISCORD_TOKEN
 <summary><b>Check Dependencies</b></summary>
 
 **Python:**
+
 ```bash
 pip list | grep discord
 pip install --upgrade discord.py
 ```
 
 **JavaScript:**
+
 ```bash
 npm list discord.js
 npm install discord.js@latest
@@ -701,6 +722,7 @@ npm install discord.js@latest
 ### ❌ Bot Online But Doesn't Respond
 
 **Checklist:**
+
 - ✅ MESSAGE CONTENT INTENT enabled?
 - ✅ Bot has "Send Messages" permission?
 - ✅ Using correct prefix (`!` by default)?
@@ -709,19 +731,22 @@ npm install discord.js@latest
 **Debug Mode:**
 
 **Python:**
+
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
 **JavaScript:**
+
 ```javascript
-client.on('debug', console.log);
+client.on("debug", console.log);
 ```
 
 ### ❌ Module/Import Errors
 
 **Python:**
+
 ```bash
 # Reinstall in virtual environment
 deactivate
@@ -732,6 +757,7 @@ pip install -r requirements.txt
 ```
 
 **JavaScript:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json
@@ -757,12 +783,12 @@ nvm use 20.17.0
 
 ### 📖 Official Documentation
 
-| Resource | Link |
-|----------|------|
-| Discord.py Docs | [discordpy.readthedocs.io](https://discordpy.readthedocs.io/) |
-| Discord.js Guide | [discordjs.guide](https://discordjs.guide/) |
-| Telegram Bot API | [core.telegram.org/bots](https://core.telegram.org/bots) |
-| Python Async | [docs.python.org/3/library/asyncio](https://docs.python.org/3/library/asyncio.html) |
+| Resource         | Link                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Discord.py Docs  | [discordpy.readthedocs.io](https://discordpy.readthedocs.io/)                       |
+| Discord.js Guide | [discordjs.guide](https://discordjs.guide/)                                         |
+| Telegram Bot API | [core.telegram.org/bots](https://core.telegram.org/bots)                            |
+| Python Async     | [docs.python.org/3/library/asyncio](https://docs.python.org/3/library/asyncio.html) |
 
 ### 🎓 Tutorials & Courses
 
@@ -782,24 +808,28 @@ nvm use 20.17.0
 ## 🎯 Learning Path
 
 ### Week 1: Basics
+
 - [ ] Setup development environment
 - [ ] Create first bot
 - [ ] Implement ping command
 - [ ] Understand events
 
 ### Week 2: Commands
+
 - [ ] Create command handler
 - [ ] Add help command
 - [ ] Implement error handling
 - [ ] Add logging
 
 ### Week 3: Advanced
+
 - [ ] Database integration
 - [ ] Slash commands
 - [ ] Embeds & reactions
 - [ ] Cogs/modules
 
 ### Week 4: Production
+
 - [ ] Deploy bot
 - [ ] Monitor performance
 - [ ] Add analytics
